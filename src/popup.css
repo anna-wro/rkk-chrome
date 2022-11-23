@@ -1,0 +1,9 @@
+body {
+  background: none;
+}
+
+#app-container {
+  padding: 48px;
+  background-color: red;
+  border-radius: 10px;
+}

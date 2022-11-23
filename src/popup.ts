@@ -1,1 +1,3 @@
-console.log('hello?');
+import './popup.css';
+
+console.log('test');

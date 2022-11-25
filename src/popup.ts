@@ -1,3 +1,11 @@
 import './popup.css';
 
-console.log('test');
+async function initialize() {
+  const data = await chrome.runtime.sendMessage({
+    type: 'get_data',
+  });
+
+  console.log({ data });
+}
+
+initialize();

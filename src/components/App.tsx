@@ -1,17 +1,29 @@
 import * as React from 'react';
+import { getCalendarData, CalendarType } from './api';
 
 export function App() {
+  const [loading, setLoading] = React.useState(false);
+  const [calendar, setCalendar] = React.useState<CalendarType>();
+
   React.useEffect(() => {
     async function initialize() {
-      const data = await chrome.runtime.sendMessage({
-        type: 'get_data',
-      });
+      setLoading(true);
+      const data = await getCalendarData();
 
-      console.log({ data });
+      setLoading(false);
+      setCalendar(data);
     }
 
     initialize();
-  });
+  }, []);
 
-  return <div>hello app</div>;
+  if (loading) {
+    return <div>loading</div>;
+  }
+
+  if (calendar) {
+    return <div>{JSON.stringify(calendar)}</div>;
+  }
+
+  return null;
 }

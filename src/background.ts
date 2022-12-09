@@ -1,7 +1,9 @@
+import {MESSAGE} from './consts'
+
 let cachedData: unknown;
 
 chrome.runtime.onMessage.addListener((message, sender, response) => {
-  if (message.type === 'get_data') {
+  if (message.type === MESSAGE.GET_CALENDAR_DATA) {
     if (cachedData) {
       console.log('data from cache');
       response(cachedData);

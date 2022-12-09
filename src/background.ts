@@ -1,16 +1,19 @@
-let fetchedData;
-
-console.log('fetching data...');
-
-fetch('https://oficjum.starokatolicy.eu/api/config')
-  .then((response) => response.json())
-  .then((data) => {
-    fetchedData = data;
-  });
+let cachedData: unknown;
 
 chrome.runtime.onMessage.addListener((message, sender, response) => {
   if (message.type === 'get_data') {
-    response(fetchedData);
+    if (cachedData) {
+      console.log('data from cache');
+      response(cachedData);
+    } else {
+      console.log('fetching data...');
+      fetch('https://oficjum.starokatolicy.eu/api/config')
+        .then((response) => response.json())
+        .then((data) => {
+          cachedData = data;
+          response(data);
+        });
+    }
   }
 
   return true;

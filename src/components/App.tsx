@@ -22,7 +22,9 @@ export function App() {
   }
 
   if (calendar) {
-    return <div>{JSON.stringify(calendar)}</div>;
+    return (
+      <div className="bg-green-100"> {JSON.stringify(calendar)}</div>
+    );
   }
 
   return null;

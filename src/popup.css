@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
-  padding: 0;
+  @apply bg-gray-100;
 }
+
+.extended-info {
+  @apply grid gap-6;
+  grid-template-columns: fit-content(40%) 1fr;
+}
+
+/* FIXME tailwind not working */

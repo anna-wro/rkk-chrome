@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { getCalendarData, CalendarType } from './api';
+import { getDataForDay } from '../utils/date';
+import { InfoForToday } from './InfoForToday';
 
 export function App() {
   const [loading, setLoading] = React.useState(false);
@@ -22,9 +24,9 @@ export function App() {
   }
 
   if (calendar) {
-    return (
-      <div className="bg-green-100"> {JSON.stringify(calendar)}</div>
-    );
+    // TODO allow switching between days
+    const todayData = getDataForDay(calendar);
+    return <InfoForToday data={todayData} />;
   }
 
   return null;

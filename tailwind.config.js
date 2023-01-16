@@ -80,7 +80,5 @@ module.exports = {
       borderWidth: { 1: '1px' },
     },
   },
-  darkMode: 'media',
-  variants: {},
   plugins: [],
 };

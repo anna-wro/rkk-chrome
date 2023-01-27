@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon';
-import type { CalendarDayType } from '../consts/types';
+import type { CalendarDayType, CalendarType } from '../consts/types';
 
 
 export type CalendarDataType = Readonly<
@@ -29,10 +29,10 @@ export const getCurrentDate = () => {
   };
 };
 
-export const getDataForDay = (calendar): CalendarDataType => {
+export const getDataForDay = (calendar: CalendarType): CalendarDataType | null => {
   const { isoDate, prettyDate } = getCurrentDate();
-
   const currentCalendarItem = calendar.find(item => item.date === isoDate);
+
   return currentCalendarItem ? { ...currentCalendarItem, prettyDate } : null;
 };
 

@@ -1,7 +1,6 @@
 type LinkPropsType = Readonly<{
   name: string;
   href: string;
-  internal?: boolean;
 }>;
 
 export default function StyledLink({ name, href }: LinkPropsType) {

@@ -9,17 +9,20 @@ export function ExtendedInfo({ data }: { data: CalendarDataType }) {
   const { dayOfWeek } = getCurrentDate();
   const [intro, linkToReadings] = copy.sundayReadings.split('[HTML]');
 
-  const [passages, setPassages] = useState([]);
+  const [passages, setPassages] = useState<string[]>([]);
   const [linksTitle, setLinksTitle] = useState('');
-  const [linksToDisplay, setLinksToDisplay] = useState([]);
+  const [linksToDisplay, setLinksToDisplay] = useState<{
+    name: string;
+    slug: string;
+  }[]>([]);
   const hasLinks = linksToDisplay.length > 0;
 
   useEffect(() => {
-    setPassages(data?.passages);
+    setPassages(data?.passages ?? []);
     setLinksTitle(data?.linksTitle ?? copy.linksTitle);
     setLinksToDisplay([
-      ...(data?.links?.length > 0 ? data.links : []),
-      ...(data?.holidays?.length > 0
+      ...(data?.links?.length ? data.links : []),
+      ...(data?.holidays?.length
         ? [{ name: 'Iubilate Domino', slug: 'iubilate-domino' }]
         : []),
     ]);

@@ -26,7 +26,7 @@ export function App() {
   if (calendar) {
     // TODO allow switching between days
     const todayData = getDataForDay(calendar);
-    return <InfoForToday data={todayData} />;
+    return todayData ? <InfoForToday data={todayData} /> : null;
   }
 
   return null;

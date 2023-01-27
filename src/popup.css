@@ -10,5 +10,3 @@ body {
   @apply grid gap-6;
   grid-template-columns: fit-content(40%) 1fr;
 }
-
-/* FIXME tailwind not working */

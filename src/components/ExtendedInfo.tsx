@@ -31,7 +31,7 @@ export function ExtendedInfo({ data }: { data: CalendarDataType }) {
   return (
     <div>
 
-      {/* FIXME: Why doesn't work on click? */}
+      {/* FIXME: Why doesn't work on click? https://stackoverflow.com/questions/16503879/chrome-extension-how-to-open-a-link-in-new-tab */}
       <div className={cx('mt-2', { 'extended-info': hasLinks })}>
         <ul style={{ minWidth: 120 }}>
           {passages?.map((passage, index) => (

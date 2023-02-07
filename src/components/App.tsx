@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getCalendarData, CalendarType } from './api';
 import { getDataForDay } from '../utils/date';
 import { InfoForToday } from './InfoForToday';
+import { Layout } from './layout/Layout';
 import copy from '../consts/copy';
 
 export function App() {
@@ -21,13 +22,23 @@ export function App() {
   }, []);
 
   if (loading) {
-    return <div className="flex h-36 justify-center items-center">{copy.loading}</div>;
+    return (
+      <Layout>
+        <div className="flex h-32 justify-center items-center">
+          {copy.loading}
+        </div>
+      </Layout>
+    );
   }
 
   if (calendar) {
     // TODO allow switching between days
     const todayData = getDataForDay(calendar);
-    return todayData ? <InfoForToday data={todayData} /> : null;
+    return todayData ? (
+      <Layout>
+        <InfoForToday data={todayData} />
+      </Layout>
+    ) : null;
   }
 
   return null;

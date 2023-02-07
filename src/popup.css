@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply px-4 py-3 w-60 font-light text-sm;
-  min-height: 160px;
+  min-height: 120px;
 }
 
 .extended-info {

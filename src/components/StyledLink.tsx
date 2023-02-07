@@ -5,9 +5,9 @@ type LinkPropsType = Readonly<{
 
 export default function StyledLink({ name, href }: LinkPropsType) {
   return (
-    // https://stackoverflow.com/questions/16503879/chrome-extension-how-to-open-a-link-in-new-tab
     <a
       href={href}
+      target="_blank"
       className="inline-block hover:underline cursor-pointer focus-visible"
     >
       {name}

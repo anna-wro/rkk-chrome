@@ -11,16 +11,11 @@ export const copy = {
   sundayReadings:
     'Dzisiejsze czytania znajdziesz również na [HTML]naszej stronie.[HTML]',
   appName: 'Oficjum',
-  offlineHeader: 'Jesteś offline.',
-  offlineDesc: 'Połącz się z siecią, aby pobrać tekst.',
-  reloadPage: 'Spróbuj ponownie',
-  updateAvailableHeader: 'Dostępna aktualizacja',
-  updateAvailableDescription:
-    'Uruchom ponownie aplikację, aby zobaczyć najnowszą wersję.',
   customPrayerHeadline: 'Modlitwy na święta',
   or: 'Albo:',
   settings: { headline: 'Ustawienia', goBackButton: 'wróć na stronę główną' },
   linksTitle: '[HTML]Modlitwy na dziś: [HTML]',
+  loading: 'Ładowanie...',
 };
 
 export default copy;

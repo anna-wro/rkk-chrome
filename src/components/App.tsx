@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getCalendarData, CalendarType } from './api';
 import { getDataForDay } from '../utils/date';
 import { InfoForToday } from './InfoForToday';
+import copy from '../consts/copy';
 
 export function App() {
   const [loading, setLoading] = React.useState(false);
@@ -20,7 +21,7 @@ export function App() {
   }, []);
 
   if (loading) {
-    return <div>loading</div>;
+    return <div className="flex h-36 justify-center items-center">{copy.loading}</div>;
   }
 
   if (calendar) {

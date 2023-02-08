@@ -38,7 +38,9 @@ export function App() {
       <Layout>
         <InfoForToday data={todayData} />
       </Layout>
-    ) : null;
+    ) : (
+      <Layout>{copy.notToday}</Layout>
+    );
   }
 
   return null;

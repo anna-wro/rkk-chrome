@@ -17,6 +17,7 @@ export const copy = {
   settings: { headline: 'Ustawienia', goBackButton: 'wróć na stronę główną' },
   linksTitle: '[HTML]Modlitwy na dziś: [HTML]',
   loading: 'Ładowanie...',
+  notToday: 'Brak informacji. Sprawdź jutro!',
 };
 
 export default copy;

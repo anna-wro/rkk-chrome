@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { getCalendarData, CalendarType } from './api';
-import { getDataForDay } from '../utils/date';
-import { InfoForToday } from './InfoForToday';
+import { InfoForDayFacade } from './InfoForDayFacade';
 import { Layout } from './layout/Layout';
 import copy from '../consts/copy';
 
@@ -32,14 +31,10 @@ export function App() {
   }
 
   if (calendar) {
-    // TODO allow switching between days
-    const todayData = getDataForDay(calendar);
-    return todayData ? (
+    return (
       <Layout>
-        <InfoForToday data={todayData} />
+        <InfoForDayFacade calendar={calendar} />
       </Layout>
-    ) : (
-      <Layout>{copy.notToday}</Layout>
     );
   }
 

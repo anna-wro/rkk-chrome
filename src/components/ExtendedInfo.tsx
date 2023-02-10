@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
-import { CalendarDataType, getCurrentDate } from '../utils/date';
+import { CalendarDataType, getSelectedDate } from '../utils/date';
 import { formatCalendarNotes } from '../utils/text';
 import { copy } from '../consts/copy';
 import cx from 'classnames';
 import StyledLink from './StyledLink';
 
 export function ExtendedInfo({ data }: { data: CalendarDataType }) {
-  const { dayOfWeek } = getCurrentDate();
+  const { dayOfWeek } = getSelectedDate();
   const [intro, linkToReadings] = copy.sundayReadings.split('[HTML]');
 
   const [passages, setPassages] = useState<string[]>([]);
   const [linksTitle, setLinksTitle] = useState('');
-  const [linksToDisplay, setLinksToDisplay] = useState<{
-    name: string;
-    slug: string;
-  }[]>([]);
+  const [linksToDisplay, setLinksToDisplay] = useState<
+    {
+      name: string;
+      slug: string;
+    }[]
+  >([]);
   const hasLinks = linksToDisplay.length > 0;
 
   useEffect(() => {
@@ -30,8 +32,6 @@ export function ExtendedInfo({ data }: { data: CalendarDataType }) {
 
   return (
     <div>
-
-      {/* FIXME: Why doesn't work on click? https://stackoverflow.com/questions/16503879/chrome-extension-how-to-open-a-link-in-new-tab */}
       <div className={cx('mt-2', { 'extended-info': hasLinks })}>
         <ul style={{ minWidth: 120 }}>
           {passages?.map((passage, index) => (
@@ -48,7 +48,10 @@ export function ExtendedInfo({ data }: { data: CalendarDataType }) {
             <div>{formatCalendarNotes(linksTitle)}</div>
             {linksToDisplay.map((link, index) => (
               <li key={index}>
-                <StyledLink name={link.name} href={link.slug} />
+                <StyledLink
+                  name={link.name}
+                  href={`https://lg.starokatolicy.eu/${link.slug}`}
+                />
               </li>
             ))}
           </ul>

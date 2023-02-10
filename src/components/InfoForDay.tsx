@@ -2,13 +2,21 @@ import { ExtendedInfo } from './ExtendedInfo';
 import { CalendarDataType } from '../utils/date';
 import { makeStartCase } from '../utils/text';
 
-export function InfoForToday({ data }: { data: CalendarDataType }) {
-  console.log({ data });
+export function InfoForDay({
+  data,
+  controls,
+}: {
+  data: CalendarDataType;
+  controls: React.ReactNode;
+}) {
   return (
     <>
       <div className="md:flex justify-between items-center">
         <div>
-          <div className="font-medium">{makeStartCase(data.prettyDate)}</div>
+          <div className="flex w-full justify-between">
+            <div className="font-medium">{makeStartCase(data.prettyDate)}</div>
+            {controls}
+          </div>
           {data?.holidays?.map((holiday) => (
             <div className="font-bold" key={holiday}>
               {holiday.toUpperCase()}

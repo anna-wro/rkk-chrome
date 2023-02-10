@@ -1,21 +1,19 @@
 import { DateTime } from 'luxon';
 import type { CalendarDayType, CalendarType } from '../consts/types';
 
-
 export type CalendarDataType = Readonly<
   {
     prettyDate: string;
   } & CalendarDayType
 >;
 
-export const getCurrentDate = () => {
-
-  let dateNow = DateTime.now();
+export const getSelectedDate = (date?: DateTime) => {
+  let dateNow = date || DateTime.now();
   const dayOfWeek = dateNow.toLocaleString(
     { weekday: 'long' },
     { locale: 'pl-pl' },
   );
-  const isSundayEve = dayOfWeek === 'sobota' && dateNow.hour >= 15;
+  const isSundayEve = !date && dayOfWeek === 'sobota' && dateNow.hour >= 15;
 
   if (isSundayEve) {
     dateNow = dateNow.plus({ days: 1 });
@@ -29,8 +27,8 @@ export const getCurrentDate = () => {
   };
 };
 
-export const getDataForDay = (calendar: CalendarType): CalendarDataType | null => {
-  const { isoDate, prettyDate } = getCurrentDate();
+export const getDataForDay = ({ calendar, date }: { calendar: CalendarType, date?: DateTime }): CalendarDataType | null => {
+  const { isoDate, prettyDate } = getSelectedDate(date || DateTime.now());
   const currentCalendarItem = calendar.find(item => item.date === isoDate);
 
   return currentCalendarItem ? { ...currentCalendarItem, prettyDate } : null;
